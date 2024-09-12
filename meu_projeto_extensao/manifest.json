@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "Meu Gerenciador de Senhas",
+  "version": "1.0",
+  "description": "Uma extensão para gerenciar senhas.",
+  "icons": {
+    "16": "src/icons/icon16.png",
+    "48": "src/icons/icon48.png",
+    "128": "src/icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": "src/icons/icon48.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "src/js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["src/js/content.js"]
+    }
+  ]
+}
+
