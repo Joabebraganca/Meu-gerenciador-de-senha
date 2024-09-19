@@ -26,3 +26,131 @@ Sinta-se à vontade para contribuir com melhorias!
 ## Licença
 
 Este projeto está licenciado sob a MIT License.
+
+### **Diagrama de Classes**
+
+Um diagrama de classes pode mostrar as principais classes e suas interações. 
+
+- **GerenciadorDeSenhas:** Classe principal que gerencia o armazenamento e a manipulação das senhas.
+- **Popup:** Classe que representa a interface do usuário (o popup da extensão).
+- **Storage:** Classe que lida com a persistência dos dados usando a API de armazenamento do Chrome.
+
+Aqui está uma descrição textual para um diagrama de classes simplificado:
+
+```
++------------------+
+| GerenciadorDeSenhas |
++------------------+
+| - senhas: List<Senha> |
++------------------+
+| + adicionarSenha(s: Senha): void |
+| + removerSenha(s: Senha): void |
+| + editarSenha(s: Senha): void |
+| + listarSenhas(): List<Senha> |
++------------------+
+
+       |
+       |
+       v
+
++------------------+
+| Popup            |
++------------------+
+| - elementoUI: HTMLElement |
++------------------+
+| + exibirSenhas(): void |
+| + mostrarFormularioAdicao(): void |
+| + atualizarListaSenhas(): void |
++------------------+
+
+       |
+       |
+       v
+
++------------------+
+| Storage          |
++------------------+
+| - dados: Object  |
++------------------+
+| + salvarDados(dados: Object): void |
+| + carregarDados(): Object |
++------------------+
+```
+
+### **Diagrama de Casos de Uso**
+
+Um diagrama de casos de uso mostra como os usuários interagem com o sistema. Para a sua extensão, os casos de uso podem incluir:
+
+- **Adicionar Senha**
+- **Visualizar Senhas**
+- **Editar Senha**
+- **Excluir Senha**
+
+Aqui está uma descrição textual para um diagrama de casos de uso simplificado:
+
+```
+     +-----------------+
+     |     Usuário     |
+     +-----------------+
+            |
+            | 
+  +---------+----------+
+  |                    |
+  v                    v
++------------------+  +------------------+
+| Adicionar Senha  |  | Visualizar Senhas|
++------------------+  +------------------+
+            |
+            v
++------------------+
+| Editar Senha     |
++------------------+
+            |
+            v
++------------------+
+| Excluir Senha    |
++------------------+
+```
+
+Aqui está um exemplo de código PlantUML para o diagrama de classes:
+
+```plantuml
+@startuml
+class GerenciadorDeSenhas {
+  - senhas: List<Senha>
+  + adicionarSenha(s: Senha): void
+  + removerSenha(s: Senha): void
+  + editarSenha(s: Senha): void
+  + listarSenhas(): List<Senha>
+}
+
+class Popup {
+  - elementoUI: HTMLElement
+  + exibirSenhas(): void
+  + mostrarFormularioAdicao(): void
+  + atualizarListaSenhas(): void
+}
+
+class Storage {
+  - dados: Object
+  + salvarDados(dados: Object): void
+  + carregarDados(): Object
+}
+
+GerenciadorDeSenhas --> Popup
+GerenciadorDeSenhas --> Storage
+@enduml
+```
+
+E aqui um exemplo para o diagrama de casos de uso:
+
+```plantuml
+@startuml
+actor Usuario
+
+Usuario --> (Adicionar Senha)
+Usuario --> (Visualizar Senhas)
+Usuario --> (Editar Senha)
+Usuario --> (Excluir Senha)
+@enduml
+```
